@@ -8,12 +8,10 @@
 */
 
 #define F_CPU 16000000UL
-#include <avr/pgmspace.h>
 #include "globalDefines.h"
-//#include <util/delay.h>
-//#include "avr/wdt.h"
+#include <avr/pgmspace.h>
 #include "ATmega328.h"
-//#include <avr/io.h>
+//#include "avr/wdt.h"
 #include <string.h>
 #include "can.h"
 
@@ -24,8 +22,8 @@
 #define aux2	    PD7			//! Definição de pino de saida
 #define INICIODOPACOTE		'@'
 #define FINALDOPACOTE		'*'
-#define POT_MODE		2 //!<APAGAR*****
-#define SERIAL_MODE		1 //!<APAGAR*********
+#define POT_MODE			2 //!<APAGAR*****
+#define SERIAL_MODE			1 //!<APAGAR*********
 #define SETWORDSIZE 		8  // Number of bits of word to set parameter, used in the comunication with PC
 #define GETWORDSIZE 		4  // Number of bits of word to get parameter, used in the comunication with PC
 
@@ -102,24 +100,24 @@ int main(void)
 	
 	while (1)
 	{
-		//wdt_reset(); //!diz que esta ok para watchdog
+		//wdt_reset(); //!<diz que esta ok para watchdog
 		
-		if ((1<<aciBomba1)&&PORTD)//!Realiza a leitura Digital na porta PD3
+		if ((1<<aciBomba1)&&PORTD)//!<Realiza a leitura Digital na porta PD3
 		{
 			estados.estBomba1 = !estados.estBomba1;
 		}
 			
-		if ((1<<aciBomba2)&&PORTD)//!Realiza a leitura Digital na porta PD4
+		if ((1<<aciBomba2)&&PORTD)//!<Realiza a leitura Digital na porta PD4
 		{
 			estados.estBomba2 = !estados.estBomba2;
 		}
 		
-		if ((1<<aciMPPT)&&PORTD)//!Realiza a leitura Digital na porta PD5
+		if ((1<<aciMPPT)&&PORTD)//!<Realiza a leitura Digital na porta PD5
 		{
 			estados.estMPPT = !estados.estMPPT;
 		}
 		
-		if ((1<<aux1)&&PORTD)//!Realiza a leitura Digital na porta PD6
+		if ((1<<aux1)&&PORTD)//!<Realiza a leitura Digital na porta PD6
 		{
 			estados.estAux1 = !estados.estAux1;
 		}
@@ -296,7 +294,6 @@ int main(void)
 			}
 		}
 		//wdt_reset(); //!diz que esta ok para watchdog	
-		_delay_ms(100);
 	}
 	return 0;
 }
